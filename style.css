@@ -1,0 +1,193 @@
+/* ========= FOND DE PAGE =========*/
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Rendre l'arrière-plan de Streamlit transparent */
+.stApp {
+    background: transparent !important;
+    padding-top: 0 !important; /* Annuler tout padding par défaut du haut */
+    margin-top: 0 !important; /* Annuler toute marge par défaut du haut */
+}
+/* Ciblage spécifique du conteneur Streamlit pour le titre */
+div[data-testid="stMarkdownContainer"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ========= TITRE (Réglé au plus haut et z-index max) =========*/
+.title {
+    color: white !important;
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 120px !important;
+    text-align: center !important;
+    font-weight: normal !important;
+    white-space: nowrap !important;
+    
+    /* Annulation des marges par défaut des H1 pour l'ancrage */
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+
+    position: fixed;
+    top: 5px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 10000; /* Priorité maximale */
+}
+
+/* ========= ECRAN BANDE ANNONCE (Marge réduite pour remonter la vidéo) =========*/
+div[data-testid="stVideo"] {
+    width: 800px; 
+    height: 400px; 
+    z-index: 50; 
+    margin-top: 100px; /* OK, si aucun espace vide Streamlit ne le précède */
+    margin-bottom: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    transform: none;
+}
+div[data-testid="stVideo"] video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+
+/* ========= ENCADRE SYNOPSIS (Pop-up Texte) =========*/
+div[data-testid="stButton"] {
+    width: 400px; 
+    margin: 0 auto; 
+    z-index: 60; 
+}
+div[data-testid="stButton"] button {
+    background: linear-gradient(180deg, #bfa175 0%, #8c7350 100%);
+    color: white;
+    border: 3px solid #f0e6cc;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    transition: all 0.2s;
+}
+
+/* Style de la zone de texte du synopsis (Position ajustée sous la vidéo) */
+.stAlert, .stText, .stMarkdown {
+    position: fixed !important;
+    top: 650px !important; /* Ajusté sous le bouton Synopsis */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 600px !important;
+    z-index: 10000 !important; 
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+/* ========= POSITIONNEMENT BLOC DE GAUCHE (CORRIGÉ) =========*/
+.left-container {
+    position: fixed;
+    top: 150px; /* CORRECTION: Pour encadrer l'écran */
+    left: 50px;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 50px
+}
+
+/* Films (Positionnement interne conservé) */
+.col1-top-left {position: absolute;top: 0px; left: 0px;width: 200px;height: auto;border-radius: 5px}
+.col2-top-middle {position: absolute;top: 0px; left: 220px;width: 200px;height: auto;border-radius: 5px;}
+.col3-top-right {position: absolute;top: 0px;left: 440px;width: 200px;height: auto;border-radius: 5px;}
+.col4-bottom-left {position: absolute;top: 330px;left: 130px;width: 200px;height: auto;border-radius: 5px;}
+.col5-bottom-middle {position: absolute;top: 330px;left: 350px;width: 200px;height: auto;border-radius: 5px;}
+
+/* ========= POSITIONNEMENT BLOC DE DROITE (CORRIGÉ) =========*/
+.right-container {
+    position: fixed;
+    top: 150px; /* CORRECTION: Pour encadrer l'écran */
+    right: 50px;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px
+}
+
+/* Acteurs (Positionnement interne conservé) */
+.image1-top-left {position: absolute;top: 0px;right: 0px;width: 200px;height: auto;border-radius: 5px;}
+.image2-top-middle {position: absolute;top: 0px; right: 220px;width: 200px;height: auto;border-radius: 5px;}
+.image3-top-right {position: absolute;top: 0px; right: 440px;width: 200px;height: auto;border-radius: 5px;}
+
+/* ========= BARRE DE RECHERCHE (CORRIGÉ) =========*/
+div[data-testid="stTextInput"] {
+    position: fixed; 
+    bottom: 70px; /* CORRECTION: Pour la placer dans l'allée centrale du bas */
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 1000; 
+    width: 1000px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style visuel de la barre */
+div[class^="stTextInput"] > div {
+    background-color: #FDF5E6;
+    border-radius: 40px;
+    border: 7px solid #D0A372;
+    padding: 0px 70px 0px 20px; 
+    box-shadow: 0 0 35px 25px rgba(255, 240, 200, 0.7);
+    position: relative;
+    height: 70px;
+    width: 800px; 
+    display: flex;
+    align-items: center;
+    margin-top: 5px; 
+}
+
+/* Champ <input> */
+div[class^="stTextInput"] input {
+    background-color: #FDF5E6 !important;
+    padding: 0;
+    margin: 0;
+    color: #5c4728;
+    font-size: 30px;
+    width: 100%;
+}
+
+/* Icône de loupe intégrée */
+div[class^="stTextInput"] > div::after {
+    content: "🔍";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: white; 
+    background-color: #FDF5E6; 
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid #FDF5E6; 
+    pointer-events: none;
+}
